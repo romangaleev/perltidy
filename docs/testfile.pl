@@ -1,10 +1,10 @@
-#Learning Perl Appendix A, Exercise 4.2
-print "What temperature is it? ";
-chop($temperature = <STDIN>);
-if ($temperature > 75) {
-  print "Too hot!\n";
-} elsif ($temperature < 68) {
-  print "Too cold!\n";
+print "Help Desk -- What Editor do you use? ";
+chomp($editor = <STDIN>);
+if ($editor =~ /emacs/i) {
+  print "Why aren't you using vi?\n";
+} elsif ($editor =~ /vi/i) {
+  print "Why aren't you using emacs?\n";
 } else {
-  print "Just right!\n";
+  print "I think that's the problem\n";
 }
+
