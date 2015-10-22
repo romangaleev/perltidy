@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <title>Cleaning up code from a code generator</title>
+  <META name="GENERATOR" CONTENT="alconv $Revision: 1.31 $">
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#A0E0E0">
+<div align="center">
+<a href="node005.html"><img src="prev.jpg" alt="Previous" border=0></a>
+<a href="node000.html#node006"><img src="up.jpg" alt="Up" border=0></a>
+</div>
+<div align="center">
+<h1>Cleaning up code from a code generator</h1>
+</div>
+A good application of perltidy is to clean up code which has been produced
+by a code generator.  Here is a snippet <code> advent.t </code> 
+which was generated from Fortran source by a translation tool.
+<hr>
+<pre>
+{
+  L9140:
+ if ($msccom::obj==$msccom::food) {
+ goto L8142;
+ }
+ if ($msccom::obj==$msccom::bird||$msccom::obj==$msccom::snake||$msccom::obj==$msccom::clam||$msccom::obj==$msccom::oyster||$msccom::obj==$msccom::dwarf||$msccom::obj==$msccom::dragon||$msccom::obj==$msccom::troll||$msccom::obj==$msccom::bear) {
+ $msccom::spk=71;
+ }
+ goto L2011;
+ # 
+  #  DRINK.  IF NO OBJECT, ASSUME WATER AND LOOK FOR IT HERE.  IF WATER IS 
+  #  THE BOTTLE, DRINK THAT, ELSE MUST BE AT A WATER LOC, SO DRINK STREAM. 
+  # 
+  L9150:
+ if ($msccom::obj==0&&$liqloc->($placom::loc)!=$msccom::water&&($liq->(0)!=$msccom::water||!$here->($msccom::bottle))) {
+ goto L8000;
+ }
+ if ($msccom::obj!=0&&$msccom::obj!=$msccom::water) {
+ $msccom::spk=110;
+ }
+ if ($msccom::spk==110||$liq->(0)!=$msccom::water||!$here->($msccom::bottle)) {
+ goto L2011;
+ }
+ $placom::prop->($msccom::bottle)=1;
+ $placom::place->($msccom::water)=0;
+ $msccom::spk=74;
+ goto L2011;
+ # 
+  #  RUB.  YIELDS VARIOUS SNIDE REMARKS. 
+  # 
+  L9160:
+ if ($msccom::obj!=$placom::lamp) {
+ $msccom::spk=76;
+ }
+ goto L2011;
+ # 
+  #  THROW.  SAME AS DISCARD UNLESS AXE.  THEN SAME AS ATTACK EXCEPT IGNOR 
+  #  AND IF DWARF IS PRESENT THEN ONE MIGHT BE KILLED.  (ONLY WAY TO DO SO 
+  #  AXE ALSO SPECIAL FOR DRAGON, BEAR, AND TROLL.  TREASURES SPECIAL FOR 
+  # 
+  L9170:
+ if ($toting->($msccom::rod2)&&$msccom::obj==$msccom::rod&&!$toting->($msccom::rod)) {
+ $msccom::obj=$msccom::rod2;
+ }
+ }
+</pre>
+<hr>
+The command <code> perltidy advent.t </code> produces <code> advent.t.tdy</code>
+containing this result:
+<hr>
+<pre>
+{
+  L9140:
+    if ( $msccom::obj == $msccom::food ) {
+        goto L8142;
+    }
+    if (   $msccom::obj == $msccom::bird
+        || $msccom::obj == $msccom::snake
+        || $msccom::obj == $msccom::clam
+        || $msccom::obj == $msccom::oyster
+        || $msccom::obj == $msccom::dwarf
+        || $msccom::obj == $msccom::dragon
+        || $msccom::obj == $msccom::troll
+        || $msccom::obj == $msccom::bear )
+    {
+        $msccom::spk = 71;
+    }
+    goto L2011;
+    # 
+    #  DRINK.  IF NO OBJECT, ASSUME WATER AND LOOK FOR IT HERE.  IF WATER IS 
+    #  THE BOTTLE, DRINK THAT, ELSE MUST BE AT A WATER LOC, SO DRINK STREAM. 
+    # 
+  L9150:
+    if (   $msccom::obj == 0
+        && $liqloc->($placom::loc) != $msccom::water
+        && ( $liq->(0) != $msccom::water || !$here->($msccom::bottle) ) )
+    {
+        goto L8000;
+    }
+    if ( $msccom::obj != 0 && $msccom::obj != $msccom::water ) {
+        $msccom::spk = 110;
+    }
+    if (   $msccom::spk == 110
+        || $liq->(0) != $msccom::water
+        || !$here->($msccom::bottle) )
+    {
+        goto L2011;
+    }
+    $placom::prop->($msccom::bottle) = 1;
+    $placom::place->($msccom::water) = 0;
+    $msccom::spk = 74;
+    goto L2011;
+    # 
+    #  RUB.  YIELDS VARIOUS SNIDE REMARKS. 
+    # 
+  L9160:
+    if ( $msccom::obj != $placom::lamp ) {
+        $msccom::spk = 76;
+    }
+    goto L2011;
+    # 
+    #  THROW.  SAME AS DISCARD UNLESS AXE.  THEN SAME AS ATTACK EXCEPT IGNOR 
+    #  AND IF DWARF IS PRESENT THEN ONE MIGHT BE KILLED.  (ONLY WAY TO DO SO 
+    #  AXE ALSO SPECIAL FOR DRAGON, BEAR, AND TROLL.  TREASURES SPECIAL FOR 
+    # 
+  L9170:
+    if (   $toting->($msccom::rod2)
+        && $msccom::obj == $msccom::rod
+        && !$toting->($msccom::rod) )
+    {
+        $msccom::obj = $msccom::rod2;
+    }
+}
+</pre>
+<hr>
+Well, it still looks a lot like fortran, but it's much more legible.
+<div align="center">
+<a href="node005.html"><img src="prev.jpg" alt="Previous" border=0></a>
+<a href="node000.html#node006"><img src="up.jpg" alt="Up" border=0></a>
+</div>
+</body>
+</html>

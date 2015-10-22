@@ -1,0 +1,11 @@
+Here are a few examples of reformatted code snippets:
+
+.{
+.include sidecmt.alc
+.include lextest.alc
+.include unit.alc
+.include matrix.alc
+.include hoh.alc
+.include advent.alc
+.}
+

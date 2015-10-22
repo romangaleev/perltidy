@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <title>Logical Structure</title>
+  <META name="GENERATOR" CONTENT="alconv $Revision: 1.18 $">
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#A0E0E0">
+<div align="center">
+<a href="node006.html"><img src="prev.gif" alt="Previous" border=0></a>
+<a href="node000.html#node007"><img src="up.gif" alt="Up" border=0></a>
+</div>
+<div align="center">
+<h1>Logical Structure</h1>
+</div>
+Here is a snippet named <code>logic.t</code> which was originally
+written as a single line:
+<hr>
+<pre>
+<pre>
+<span class="k">if</span> <span class="s">(</span><span class="s">(</span>!<span class="s">(</span><span class="i">$from</span> || <span class="i">$to</span> || <span class="i">$subject</span> || <span class="i">$size</span> || <span class="s">(</span><span class="i">$fieldname</span>&amp;&amp;<span class="i">$fieldval</span><span class="s">)</span><span class="s">)</span> || !<span class="i">$ruletype</span><span class="s">)</span> &amp;&amp; !<span class="i">$dest</span><span class="s">)</span> <span class="s">{</span>
+        <span class="k">next</span><span class="sc">;</span>
+<span class="s">}</span>
+</pre>
+<hr>
+The command <code>perltidy logic.t</code> produces a file
+named <code>logic.t.tdy</code> with this result:
+<hr>
+<pre>
+<span class="k">if</span> <span class="s">(</span>
+    <span class="s">(</span>
+           !<span class="s">(</span> <span class="i">$from</span> || <span class="i">$to</span> || <span class="i">$subject</span> || <span class="i">$size</span> || <span class="s">(</span> <span class="i">$fieldname</span> &amp;&amp; <span class="i">$fieldval</span> <span class="s">)</span> <span class="s">)</span>
+        || !<span class="i">$ruletype</span>
+    <span class="s">)</span>
+    &amp;&amp; !<span class="i">$dest</span>
+  <span class="s">)</span>
+<span class="s">{</span>
+    <span class="k">next</span><span class="sc">;</span>
+<span class="s">}</span>
+</pre>
+<hr>
+<div align="center">
+<a href="node006.html"><img src="prev.gif" alt="Previous" border=0></a>
+<a href="node000.html#node007"><img src="up.gif" alt="Up" border=0></a>
+</div>
+</body>
+</html>

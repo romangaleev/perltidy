@@ -1,0 +1,77 @@
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Perltidy TODO List</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rev="made" href="mailto:root@localhost" />
+</head>
+
+<body style="background-color: white">
+
+<p><a name="__index__"></a></p>
+<!-- INDEX BEGIN -->
+
+<ul>
+
+	<li><a href="#perltidy_todo_list">Perltidy TODO List</a></li>
+	<ul>
+
+		<li><a href="#improved_vertical_alignment">Improved Vertical Alignment</a></li>
+		<li><a href="#documentation">Documentation</a></li>
+		<li><a href="#html_writer">HTML writer</a></li>
+		<li><a href="#automatic_style_detection">Automatic style detection</a></li>
+	</ul>
+
+	<li><a href="#things_which_have_been_suggested_but_will_not_be_done">Things which have been suggested but will not be done</a></li>
+	<ul>
+
+		<li><a href="#recursive_file_processing">Recursive file processing</a></li>
+	</ul>
+
+</ul>
+<!-- INDEX END -->
+
+<hr />
+<p>
+</p>
+<h1><a name="perltidy_todo_list">Perltidy TODO List</a></h1>
+<p>This is a partial ``wish-list'' of features to add and things to do.  All of
+these are of interest, but there is no particular schedule for implementing
+them.</p>
+<p>
+</p>
+<h2><a name="improved_vertical_alignment">Improved Vertical Alignment</a></h2>
+<p>There are many opportunities for improving vertical alignment.</p>
+<p>
+</p>
+<h2><a name="documentation">Documentation</a></h2>
+<p>A FAQ is needed to explain some of the more subtle formatting
+issues, and to give examples of different styles.</p>
+<p>The -formatter callback object documentation is incomplete.</p>
+<p>
+</p>
+<h2><a name="html_writer">HTML writer</a></h2>
+<p>The HTML writer does not colorize interpolated identifiers in here
+documents or quoted strings.  The tokenizer outputs interpolation
+information for here docs; it still needs to be updated to do this for
+multi-line quotes.  Then code needs to be written to scan for and markup
+identifiers.</p>
+<p>
+</p>
+<h2><a name="automatic_style_detection">Automatic style detection</a></h2>
+<p>It would be nice to write a program to read a sample of perl code
+and write an approximate .perltidyrc file for that style.</p>
+<p>
+</p>
+<hr />
+<h1><a name="things_which_have_been_suggested_but_will_not_be_done">Things which have been suggested but will not be done</a></h1>
+<p>
+</p>
+<h2><a name="recursive_file_processing">Recursive file processing</a></h2>
+<p>A -r flag might be nice, but this is probably best handled by
+an exterior shell script.</p>
+
+</body>
+
+</html>
