@@ -1673,6 +1673,7 @@ sub generate_options {
     $add_option->( 'break-after-all-operators',               'baao',  '!' );
     $add_option->( 'break-before-all-operators',              'bbao',  '!' );
     $add_option->( 'keep-interior-semicolons',                'kis',   '!' );
+    $add_option->( 'keep-vertical-alignment',                 'kva',   '!' );
 
     ########################################
     $category = 6;    # Controlling list formatting
@@ -13644,20 +13645,22 @@ sub get_seqno {
 
     BEGIN {
 
-        # Removed =~ from list to improve chances of alignment
-        @_ = qw#
-          = **= += *= &= <<= &&= -= /= |= >>= ||= //= .= %= ^= x=
-          { ? : => && || // ~~ !~~
-          #;
-        @is_vertical_alignment_type{@_} = (1) x scalar(@_);
-
-        # only align these at end of line
-        @_ = qw(&& ||);
-        @is_terminal_alignment_type{@_} = (1) x scalar(@_);
-
-        # eq and ne were removed from this list to improve alignment chances
-        @_ = qw(if unless and or err for foreach while until);
-        @is_vertical_alignment_keyword{@_} = (1) x scalar(@_);
+        unless ( $rOpts->{'keep-vertical-alignment'} ) { 
+            # Removed =~ from list to improve chances of alignment
+            @_ = qw#
+              = **= += *= &= <<= &&= -= /= |= >>= ||= //= .= %= ^= x=
+              { ? : => && || // ~~ !~~
+              #;
+            @is_vertical_alignment_type{@_} = (1) x scalar(@_);
+    
+            # only align these at end of line
+            @_ = qw(&& ||);
+            @is_terminal_alignment_type{@_} = (1) x scalar(@_);
+    
+            # eq and ne were removed from this list to improve alignment chances
+            @_ = qw(if unless and or err for foreach while until);
+            @is_vertical_alignment_keyword{@_} = (1) x scalar(@_);
+        }
     }
 
     sub set_vertical_alignment_markers {
